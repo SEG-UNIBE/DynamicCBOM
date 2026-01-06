@@ -1,5 +1,8 @@
 mkdir -p test_logs
 
+dynamic-cbom install-dependencies
+
+
 # # run python test programs with dynamic-cbom
 dynamic-cbom run-python-test testPrograms/cryptography_symmetric.py --log-file test_logs/symmetric.log
 dynamic-cbom run-python-test testPrograms/cryptography_asymmetric.py --log-file test_logs/asymmetric.log
