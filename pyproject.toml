@@ -1,0 +1,140 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dynamic-cbom"
+version = "0.1.0"
+description = "Runtime Cryptography Bill of Materials (CBOM) extraction using eBPF"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [
+    { name = "SEG UNIBE", email = "william.anze.dan@gmail.com" }
+]
+maintainers = [
+    { name = "SEG UNIBE", email = "william.anze.dan@gmail.com" }
+]
+keywords = [
+    "cryptography",
+    "sbom",
+    "cbom",
+    "bill-of-materials",
+    "ebpf",
+    "bpftrace",
+    "security",
+    "compliance",
+    "runtime-tracing",
+    "cyclonedx",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "Intended Audience :: Information Technology",
+    "Natural Language :: English",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: System :: Monitoring",
+    "Topic :: Utilities",
+]
+requires-python = ">=3.12"
+dependencies = [
+    "dynaconf>=3.2.12",
+    "matplotlib>=3.10.7",
+    "pandas>=2.3.3",
+    "pdoc>=16.0.0",
+    "plotly>=6.5.0",
+    "pyyaml>=6.0.3",
+    "requests>=2.32.5",
+    "rule-engine>=4.5.3",
+    "scipy>=1.16.3",
+    "thefuzz>=0.22.1",
+    "typer>=0.20.0",
+    "wordcloud>=1.9.4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.14.3",
+    "black>=23.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/SEG-UNIBE/DynamicCBOM"
+Repository = "https://github.com/SEG-UNIBE/DynamicCBOM.git"
+Documentation = "https://github.com/SEG-UNIBE/DynamicCBOM#readme"
+Issues = "https://github.com/SEG-UNIBE/DynamicCBOM/issues"
+
+[project.scripts]
+dynamic-cbom = "interface.client:app"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["interface*"]
+
+[tool.setuptools.package-data]
+interface = [
+    "cbom_rules.yaml",
+    "settings.toml",
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+addopts = "--strict-markers"
+
+[tool.coverage.run]
+source = ["src/interface"]
+omit = [
+    "*/tests/*",
+    "*/test_*.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]

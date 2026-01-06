@@ -38,20 +38,45 @@ DynamicCBOM traces cryptographic functions at runtime, generating industry-stand
 
 ## 🚀 Quick Start (30 seconds)
 
-### Installation
-Currently, DynamicCBOM is tested on Ubuntu 25.04. The main reason for choosing this Ubuntu version is that it is installed with newer version of OpenSSL by default (OpenSSL 3.4.1). The tool is version-sensitive on OpenSSL. Different versions may have slight effect on performance.
-```bash
-# 1. Install uv package manager
-curl -LsSf https://astral.sh/uv/install.sh | sh
+### System Requirements
+Currently, DynamicCBOM is tested on **Ubuntu 25.04** with:
+- **Python**: 3.12 or later
+- **OpenSSL**: 3.4.1 (default in Ubuntu 25.04)
+- **Kernel**: 4.8+ with eBPF support
+- **sudo access**: Required for bpftrace
 
-# 2. Clone and setup
-git clone https://github.com/your-org/DynamicCBOM.git
+⚠️ The tool is version-sensitive on OpenSSL. Different versions may affect performance.
+
+### Installation (from PyPI - Recommended)
+
+```bash
+# 1. Install DynamicCBOM from PyPI
+pip install dynamic-cbom
+
+# 2. Install system dependencies
+sudo apt install make
+
+# 3. Install bpftrace (via the tool)
+dynamic-cbom install-dependencies
+
+# 4. Verify installation
+dynamic-cbom --help
+```
+
+### Installation (Development)
+
+```bash
+# 1. Clone and setup
+git clone https://github.com/SEG-UNIBE/DynamicCBOM.git
 cd DynamicCBOM
+
+# 2. Install uv package manager
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # 3. Install system dependencies
 sudo apt install make
 
-# 4. Build and install
+# 4. Install from source
 uv build
 uv pip install dist/dynamic_cbom-0.1.0-py3-none-any.whl
 
@@ -275,12 +300,20 @@ We welcome contributions! To contribute:
 
 ### Development Setup
 
-```bash
-cd src
-uv sync              # Install dev dependencies
-# Make changes...
-uv run pytest        # Run tests (if available)
-```
+See [DEVELOPMENT.md](DEVELOPMENT.md) for:
+- Setting up development environment
+- Code style guidelines
+- Running tests and linting
+- Version management
+- Publishing workflow
+
+### Publishing to PyPI
+
+See [PUBLISHING.md](PUBLISHING.md) for detailed instructions on:
+- Creating PyPI credentials
+- Testing with TestPyPI
+- Publishing releases
+- Managing versions and changelogs
 
 ---
 
