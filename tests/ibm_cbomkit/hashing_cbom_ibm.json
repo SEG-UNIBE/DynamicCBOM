@@ -1,0 +1,202 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:1a9a6c0b-7c80-4003-8dd4-1fa39372cceb",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2025-12-08T23:13:09Z",
+    "tools": {
+      "components": [],
+      "services": [
+        {
+          "provider": {
+            "name": "PQCA"
+          },
+          "name": "CBOMkit"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "gitUrl",
+        "value": "https://github.com/william-dan/Testcases-for-IBM-cbomkit"
+      },
+      {
+        "name": "revision",
+        "value": "main"
+      },
+      {
+        "name": "commit",
+        "value": "92da220"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "33edb10a-6c13-4a33-a339-ede1a2e752e0",
+      "name": "SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_hashing.py",
+            "line": 225,
+            "offset": 8,
+            "additionalContext": "HMAC"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "256",
+          "cryptoFunctions": [
+            "digest"
+          ]
+        },
+        "oid": "2.16.840.1.101.3.4.2.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "b08d57ed-2769-46ad-9dc8-c5bd468e6b54",
+      "name": "private-key@b08d57ed-2769-46ad-9dc8-c5bd468e6b54",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_hashing.py",
+            "line": 309,
+            "offset": 11,
+            "additionalContext": "generate_private_key"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key",
+          "size": 2048
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "b4ba4ee7-34ab-452b-bc63-70321d4d026b",
+      "name": "HMAC-SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_hashing.py",
+            "line": 225,
+            "offset": 8,
+            "additionalContext": "HMAC"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac",
+          "cryptoFunctions": [
+            "tag"
+          ]
+        },
+        "oid": "1.2.840.113549.2.9"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "1168341f-33d1-444c-8d86-444b51f25d0c",
+      "name": "private-key@1168341f-33d1-444c-8d86-444b51f25d0c",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_hashing.py",
+            "line": 313,
+            "offset": 11,
+            "additionalContext": "generate_private_key"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key"
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "4760d07a-fa7b-47cd-a825-9e2244369c27",
+      "name": "RSA-2048",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_hashing.py",
+            "line": 309,
+            "offset": 11,
+            "additionalContext": "generate_private_key"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "parameterSetIdentifier": "2048",
+          "cryptoFunctions": [
+            "keygen"
+          ]
+        },
+        "oid": "1.2.840.113549.1.1.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "8a432357-368b-4353-bcd4-1c4fc4cba95f",
+      "name": "EC-secp256r1",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_hashing.py",
+            "line": 313,
+            "offset": 11,
+            "additionalContext": "generate_private_key"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "curve": "secp256r1",
+          "cryptoFunctions": [
+            "keygen"
+          ]
+        },
+        "oid": "1.2.840.10045.2.1"
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "b4ba4ee7-34ab-452b-bc63-70321d4d026b",
+      "dependsOn": [
+        "33edb10a-6c13-4a33-a339-ede1a2e752e0"
+      ]
+    },
+    {
+      "ref": "1168341f-33d1-444c-8d86-444b51f25d0c",
+      "dependsOn": [
+        "8a432357-368b-4353-bcd4-1c4fc4cba95f"
+      ]
+    },
+    {
+      "ref": "b08d57ed-2769-46ad-9dc8-c5bd468e6b54",
+      "dependsOn": [
+        "4760d07a-fa7b-47cd-a825-9e2244369c27"
+      ]
+    }
+  ]
+}

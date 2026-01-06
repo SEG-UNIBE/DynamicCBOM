@@ -1,0 +1,228 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:00000000-0000-0000-0000-00000000a5ym",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2025-12-09T00:00:00Z",
+    "tools": {
+      "components": [],
+      "services": []
+    }
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-hkdf-sha256",
+      "name": "HKDF-SHA256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "kdf",
+          "cryptoFunctions": [
+            "keyderive"
+          ],
+          "parameterSetIdentifier": 256
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-sha256",
+      "name": "SHA256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "cryptoFunctions": [
+            "digest"
+          ],
+          "parameterSetIdentifier": 256
+        }
+      }
+    },
+
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-rsa-pss-sha256",
+      "name": "RSA-PSS-SHA256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "cryptoFunctions": [
+            "keygen",
+            "sign",
+            "verify"
+          ],
+          "parameterSetIdentifier": 2048
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-rsa-oaep-sha256",
+      "name": "RSA-OAEP-SHA256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "cryptoFunctions": [
+            "keygen",
+            "encrypt",
+            "decrypt"
+          ],
+          "parameterSetIdentifier": 2048
+        }
+      }
+    },
+
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-dsa-sha256",
+      "name": "DSA-SHA256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "cryptoFunctions": [
+            "keygen",
+            "sign",
+            "verify"
+          ],
+          "parameterSetIdentifier": 2048
+        }
+      }
+    },
+
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-ecdsa-secp256r1-sha256",
+      "name": "ECDSA-secp256r1-SHA256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "secp256r1",
+          "cryptoFunctions": [
+            "keygen",
+            "sign",
+            "verify"
+          ],
+          "parameterSetIdentifier": 256
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-ecdh-secp256r1",
+      "name": "ECDH-secp256r1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree",
+          "curve": "secp256r1",
+          "cryptoFunctions": [
+            "keygen",
+            "keyagree",
+            "keyderive"
+          ],
+          "parameterSetIdentifier": 256
+        }
+      }
+    },
+
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-dh-2048",
+      "name": "DH-2048",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree",
+          "cryptoFunctions": [
+            "paramgen",
+            "keygen",
+            "keyagree",
+            "keyderive"
+          ],
+          "parameterSetIdentifier": 2048
+        }
+      }
+    },
+
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-ed25519",
+      "name": "Ed25519",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "Edwards25519",
+          "cryptoFunctions": [
+            "keygen",
+            "sign",
+            "verify"
+          ],
+          "parameterSetIdentifier": 255
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-ed448",
+      "name": "Ed448",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "Edwards448",
+          "cryptoFunctions": [
+            "keygen",
+            "sign",
+            "verify"
+          ],
+          "parameterSetIdentifier": 448
+        }
+      }
+    },
+
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-x25519",
+      "name": "X25519",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree",
+          "curve": "Curve25519",
+          "cryptoFunctions": [
+            "keygen",
+            "keyagree",
+            "keyderive"
+          ],
+          "parameterSetIdentifier": 255
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-x448",
+      "name": "X448",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree",
+          "curve": "Curve448",
+          "cryptoFunctions": [
+            "keygen",
+            "keyagree",
+            "keyderive"
+          ],
+          "parameterSetIdentifier": 448
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+/* Monitors symmetric cryptographic operations in OpenSSL
+  First column: comm (process name)
+*/
+
+
+
+uprobe:libcrypto:EVP_EncryptInit*
+{
+  printf("%-16s | %-80s | %-8s | %-6d | %-25s | prev=%-20p\n", comm, probe, strftime("%Y-%m-%d %H:%M:%S", nsecs), pid, "nan", (uint64)arg0);
+}
+
+uprobe:libcrypto:EVP_DecryptInit*
+{
+  printf("%-16s | %-80s | %-8s | %-6d | %-25s | prev=%-20p\n", comm, probe, strftime("%Y-%m-%d %H:%M:%S", nsecs), pid, "nan", (uint64)arg0);
+}

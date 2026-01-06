@@ -1,0 +1,481 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:c3dff3da-8d82-4ef3-9d12-3e1e7458ec9b",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2025-12-08T23:11:58Z",
+    "tools": {
+      "components": [],
+      "services": [
+        {
+          "provider": {
+            "name": "PQCA"
+          },
+          "name": "CBOMkit"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "gitUrl",
+        "value": "https://github.com/william-dan/Testcases-for-IBM-cbomkit"
+      },
+      {
+        "name": "revision",
+        "value": "main"
+      },
+      {
+        "name": "commit",
+        "value": "41f83b0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "62a21272-f526-4545-8fe9-23bd2488fd6f",
+      "name": "private-key@62a21272-f526-4545-8fe9-23bd2488fd6f",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_asymmetric.py",
+            "line": 202,
+            "offset": 11,
+            "additionalContext": "generate_private_key"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key"
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "f5d62a50-ee4f-4dfc-88da-518e82026cee",
+      "name": "Ed448",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_asymmetric.py",
+            "line": 321,
+            "offset": 11,
+            "additionalContext": "generate"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "Edwards448",
+          "cryptoFunctions": [
+            "keygen"
+          ]
+        },
+        "oid": "1.3.101.113"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "0003f6eb-4b4c-47ff-aa26-ec5a96182a2a",
+      "name": "SHAKE256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_asymmetric.py",
+            "line": 321,
+            "offset": 11,
+            "additionalContext": "generate"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "xof",
+          "parameterSetIdentifier": "256",
+          "cryptoFunctions": [
+            "digest"
+          ]
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "c8bd017c-5c5d-4e1e-8917-b88d9b15fbcd",
+      "name": "DH",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_asymmetric.py",
+            "line": 202,
+            "offset": 11,
+            "additionalContext": "generate_private_key"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "cryptoFunctions": [
+            "keygen"
+          ]
+        },
+        "oid": "1.2.840.113549.1.3.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "c61bc2cd-3c01-4e7b-a50d-53287da98c93",
+      "name": "private-key@c61bc2cd-3c01-4e7b-a50d-53287da98c93",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_asymmetric.py",
+            "line": 287,
+            "offset": 45
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key"
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "dba08ca5-64d1-49c8-b69f-200cfef4f36d",
+      "name": "HKDF-SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_asymmetric.py",
+            "line": 30,
+            "offset": 11,
+            "additionalContext": "HKDF"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "kdf",
+          "parameterSetIdentifier": "256",
+          "cryptoFunctions": [
+            "keyderive"
+          ]
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "22a609b3-91aa-4d78-8000-ab2319578f1d",
+      "name": "private-key@22a609b3-91aa-4d78-8000-ab2319578f1d",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_asymmetric.py",
+            "line": 304,
+            "offset": 11,
+            "additionalContext": "generate"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key"
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "b862804c-6005-4cdc-a6b9-111126d37c05",
+      "name": "SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_asymmetric.py",
+            "line": 30,
+            "offset": 11,
+            "additionalContext": "HKDF"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "256",
+          "cryptoFunctions": [
+            "digest"
+          ]
+        },
+        "oid": "2.16.840.1.101.3.4.2.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "196446df-1d49-4808-abec-798dce0ba3bf",
+      "name": "private-key@196446df-1d49-4808-abec-798dce0ba3bf",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_asymmetric.py",
+            "line": 276,
+            "offset": 33
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key"
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "1e86a494-7170-4bd3-a1a3-ebb00449978f",
+      "name": "Ed25519",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_asymmetric.py",
+            "line": 304,
+            "offset": 11,
+            "additionalContext": "generate"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "Edwards25519",
+          "cryptoFunctions": [
+            "keygen"
+          ]
+        },
+        "oid": "1.3.101.112"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "4a4998e1-bef6-4b5c-a67d-51d64c81c37c",
+      "name": "x448",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_asymmetric.py",
+            "line": 387,
+            "offset": 11,
+            "additionalContext": "generate"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree",
+          "curve": "Curve448",
+          "cryptoFunctions": [
+            "keygen"
+          ]
+        },
+        "oid": "1.3.101.111"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "d7c09570-e04e-485d-a6e9-c078f01fdbd9",
+      "name": "private-key@d7c09570-e04e-485d-a6e9-c078f01fdbd9",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_asymmetric.py",
+            "line": 321,
+            "offset": 11,
+            "additionalContext": "generate"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key"
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "d4ba4cb5-fb65-4052-8eaf-95010704839e",
+      "name": "private-key@d4ba4cb5-fb65-4052-8eaf-95010704839e",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_asymmetric.py",
+            "line": 288,
+            "offset": 41
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key"
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "1c22f1ff-785e-447d-bcd7-2e8995c10943",
+      "name": "SHA512",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_asymmetric.py",
+            "line": 304,
+            "offset": 11,
+            "additionalContext": "generate"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "512",
+          "cryptoFunctions": [
+            "digest"
+          ]
+        },
+        "oid": "2.16.840.1.101.3.4.2.3"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "c202bbf2-d4fa-4e88-b191-e20fe3f263a0",
+      "name": "x25519",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_asymmetric.py",
+            "line": 382,
+            "offset": 11,
+            "additionalContext": "generate"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree",
+          "curve": "Curve25519",
+          "cryptoFunctions": [
+            "keygen"
+          ]
+        },
+        "oid": "1.3.101.110"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "6e432ae7-3f0c-48fd-8937-46e31d65d9dd",
+      "name": "EC-secp256r1",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_asymmetric.py",
+            "line": 276,
+            "offset": 33
+          },
+          {
+            "location": "testPrograms/cryptography_asymmetric.py",
+            "line": 287,
+            "offset": 45
+          },
+          {
+            "location": "testPrograms/cryptography_asymmetric.py",
+            "line": 288,
+            "offset": 41
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "curve": "secp256r1",
+          "cryptoFunctions": [
+            "keygen"
+          ]
+        },
+        "oid": "1.2.840.10045.2.1"
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "1e86a494-7170-4bd3-a1a3-ebb00449978f",
+      "dependsOn": [
+        "1c22f1ff-785e-447d-bcd7-2e8995c10943"
+      ]
+    },
+    {
+      "ref": "d7c09570-e04e-485d-a6e9-c078f01fdbd9",
+      "dependsOn": [
+        "f5d62a50-ee4f-4dfc-88da-518e82026cee"
+      ]
+    },
+    {
+      "ref": "196446df-1d49-4808-abec-798dce0ba3bf",
+      "dependsOn": [
+        "6e432ae7-3f0c-48fd-8937-46e31d65d9dd"
+      ]
+    },
+    {
+      "ref": "c61bc2cd-3c01-4e7b-a50d-53287da98c93",
+      "dependsOn": [
+        "6e432ae7-3f0c-48fd-8937-46e31d65d9dd"
+      ]
+    },
+    {
+      "ref": "62a21272-f526-4545-8fe9-23bd2488fd6f",
+      "dependsOn": [
+        "c8bd017c-5c5d-4e1e-8917-b88d9b15fbcd"
+      ]
+    },
+    {
+      "ref": "f5d62a50-ee4f-4dfc-88da-518e82026cee",
+      "dependsOn": [
+        "0003f6eb-4b4c-47ff-aa26-ec5a96182a2a"
+      ]
+    },
+    {
+      "ref": "d4ba4cb5-fb65-4052-8eaf-95010704839e",
+      "dependsOn": [
+        "6e432ae7-3f0c-48fd-8937-46e31d65d9dd"
+      ]
+    },
+    {
+      "ref": "22a609b3-91aa-4d78-8000-ab2319578f1d",
+      "dependsOn": [
+        "1e86a494-7170-4bd3-a1a3-ebb00449978f"
+      ]
+    },
+    {
+      "ref": "dba08ca5-64d1-49c8-b69f-200cfef4f36d",
+      "dependsOn": [
+        "b862804c-6005-4cdc-a6b9-111126d37c05"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+# key = "value"
+# a_boolean = false
+# number = 1234
+# a_float = 56.8
+# a_list = [1, 2, 3, 4]
+
+# [a_dict]
+# hello = "world"
+
+# [a_dict.nested]
+# other_level = "nested value"
+
+default_bpftrace_binary_path = "./bpftrace"
+default_bpftrace_script_path = "./probes/build/combined_probes.bt"
+default_bpftrace_script_folder_path = "./probes"
+bpftrace_download_url = "https://github.com/bpftrace/bpftrace/releases/download/v0.24.1/bpftrace"
+
+default_rules_path = "./interface/cbom_rules.yaml"
+default_log_path =  "./openssl_trace.log"
+default_output_path = "./cbom.json"
+
+# Chart settings
+bar_width = 0.26
+facecolors = ["#3FC1C9", "#F5F5F5", "#FC5185"]
+stacked_facecolors = [
+    ["#80A1BA", "#91C4C3", "#B4DEBD"],
+    ["#F9F8F6", "#D9CFC7", "#C9B59C"],
+    ["#FF8FB7", "#E83C91", "#43334C"]
+]
+stacked_hatch_patterns = [
+    ['////', 'xxxx', '....'],
+    ['////', 'xxxx', '....'],
+    ['////', 'xxxx', '....']
+]
+edgecolor  = "#364F6B"
+hatch_patterns = ['////', 'xxxx', '....']
+
+singular_facecolors = ["#3d405b", "#81b29a", "#f2cc8f"]
+
+# primitive mapping to asymmetric, symmetric, hashing
+[primitive_mapping]
+asymmetric = ["pke", "signature", "key-agree"]
+symmetric = ["ae", "block-cipher"]
+hashing = ["hash", "rng"]

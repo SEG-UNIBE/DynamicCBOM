@@ -1,0 +1,205 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:00000000-0000-0000-0000-000000000007",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2025-12-11T00:00:00Z",
+    "tools": {
+      "components": [],
+      "services": [
+        {
+          "provider": {
+            "name": "GroundTruth"
+          },
+          "name": "ManualLabel"
+        }
+      ]
+    },
+    "properties": []
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-id-aes256-gcm",
+      "name": "ID-AES256-GCM",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/comprehensive_openssl_demo.cpp",
+            "line": 120,
+            "offset": 0,
+            "additionalContext": "EVP_aes_256_gcm"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae",
+          "cryptoFunctions": [
+            "encrypt",
+            "decrypt"
+          ],
+          "parameterSetIdentifier": "256-GCM"
+        },
+        "oid": "2.16.840.1.101.3.4.1.46"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-id-sha256",
+      "name": "SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/comprehensive_openssl_demo.cpp",
+            "line": 170,
+            "offset": 0,
+            "additionalContext": "EVP_sha256"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "256",
+          "cryptoFunctions": [
+            "digest"
+          ]
+        },
+        "oid": "2.16.840.1.101.3.4.2.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-id-hmac-sha256",
+      "name": "HMAC-SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/comprehensive_openssl_demo.cpp",
+            "line": 190,
+            "offset": 0,
+            "additionalContext": "HMAC"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "256",
+          "cryptoFunctions": [
+            "mac"
+          ]
+        },
+        "oid": "1.2.840.113549.2.9"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-id-rsa-2048-oaep-sha256",
+      "name": "RSA-2048-OAEP-SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/comprehensive_openssl_demo.cpp",
+            "line": 230,
+            "offset": 0,
+            "additionalContext": "RSA_OAEP_PADDING"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "parameterSetIdentifier": "2048",
+          "cryptoFunctions": [
+            "keygen",
+            "encrypt",
+            "decrypt"
+          ]
+        },
+        "oid": "1.2.840.113549.1.1.7"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-id-rsa-2048-pss-sha256",
+      "name": "RSA-2048-PSS-SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/comprehensive_openssl_demo.cpp",
+            "line": 280,
+            "offset": 0,
+            "additionalContext": "EVP_DigestSignInit"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "parameterSetIdentifier": "2048",
+          "cryptoFunctions": [
+            "sign",
+            "verify"
+          ]
+        },
+        "oid": "1.2.840.113549.1.1.10"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "pk-rsa-2048-main",
+      "name": "private-key@pk-rsa-2048-main",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/comprehensive_openssl_demo.cpp",
+            "line": 320,
+            "offset": 0,
+            "additionalContext": "generate_rsa_2048_key"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key"
+        }
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "alg-id-hmac-sha256",
+      "dependsOn": [
+        "alg-id-sha256"
+      ]
+    },
+    {
+      "ref": "alg-id-rsa-2048-oaep-sha256",
+      "dependsOn": [
+        "alg-id-sha256"
+      ]
+    },
+    {
+      "ref": "alg-id-rsa-2048-pss-sha256",
+      "dependsOn": [
+        "alg-id-sha256"
+      ]
+    },
+    {
+      "ref": "pk-rsa-2048-main",
+      "dependsOn": [
+        "alg-id-rsa-2048-oaep-sha256",
+        "alg-id-rsa-2048-pss-sha256"
+      ]
+    }
+  ]
+}

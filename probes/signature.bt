@@ -1,0 +1,14 @@
+/* Monitors cryptographic signature operations in OpenSSL */
+
+
+uprobe:libcrypto:EVP_PKEY_sign_init*
+{
+  printf("%-16s | %-80s | %-8s | %-6d | %-25s | prev=%-20p \n",
+         comm, probe, strftime("%Y-%m-%d %H:%M:%S", nsecs), pid, "nan", (uint64)arg0);
+}
+
+uprobe:libcrypto:EVP_PKEY_verify_init*
+{
+  printf("%-16s | %-80s | %-8s | %-6d | %-25s | prev=%-20p \n",
+         comm, probe, strftime("%Y-%m-%d %H:%M:%S", nsecs), pid, "nan", (uint64)arg0);
+}

@@ -1,0 +1,394 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:00000000-0000-0000-0000-000000000010",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2025-12-10T00:00:00Z",
+    "tools": {
+      "components": [],
+      "services": [
+        {
+          "provider": {
+            "name": "Manual"
+          },
+          "name": "GroundTruth"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "sourceFile",
+        "value": "crypto_demo.js"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "privkey-rsa-node-demo",
+      "name": "private-key@rsa-node-demo",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "crypto_demo.js",
+            "line": 29,
+            "offset": 2,
+            "additionalContext": "generateRsaKeyPair"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key"
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "privkey-ec-node-demo",
+      "name": "private-key@ec-node-demo",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "crypto_demo.js",
+            "line": 69,
+            "offset": 2,
+            "additionalContext": "generateEcKeyPair"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key"
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-rsa-oaep-sha256",
+      "name": "RSA-OAEP-SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "crypto_demo.js",
+            "line": 39,
+            "offset": 4,
+            "additionalContext": "rsaEncrypt/rsaDecrypt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "cryptoFunctions": [
+            "keygen",
+            "encrypt",
+            "decrypt"
+          ]
+        },
+        "oid": "1.2.840.113549.1.1.7"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-rsassa-pss-sha256",
+      "name": "RSASSA-PSS-SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "crypto_demo.js",
+            "line": 49,
+            "offset": 4,
+            "additionalContext": "rsaSign/rsaVerify"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "cryptoFunctions": [
+            "keygen",
+            "sign",
+            "verify"
+          ]
+        },
+        "oid": "1.2.840.113549.1.1.10"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-ecdsa-prime256v1-sha256",
+      "name": "ECDSA-prime256v1-SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "crypto_demo.js",
+            "line": 73,
+            "offset": 4,
+            "additionalContext": "ecdsaSign/ecdsaVerify"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "prime256v1",
+          "cryptoFunctions": [
+            "keygen",
+            "sign",
+            "verify"
+          ]
+        },
+        "oid": "1.2.840.10045.4.3.2"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-aes256-gcm",
+      "name": "AES256-GCM",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "crypto_demo.js",
+            "line": 93,
+            "offset": 4,
+            "additionalContext": "aesGcmEncrypt/aesGcmDecrypt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae",
+          "parameterSetIdentifier": "256",
+          "cryptoFunctions": [
+            "encrypt",
+            "decrypt"
+          ]
+        },
+        "oid": "2.16.840.1.101.3.4.1.46"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-aes256-cbc",
+      "name": "AES256-CBC",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "crypto_demo.js",
+            "line": 121,
+            "offset": 4,
+            "additionalContext": "aesCbcEncrypt/aesCbcDecrypt"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher",
+          "parameterSetIdentifier": "256",
+          "cryptoFunctions": [
+            "encrypt",
+            "decrypt"
+          ]
+        },
+        "oid": "2.16.840.1.101.3.4.1.42"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-sha256",
+      "name": "SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "crypto_demo.js",
+            "line": 149,
+            "offset": 4,
+            "additionalContext": "hashSha256/hashSha256Streaming"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "256",
+          "cryptoFunctions": [
+            "digest"
+          ]
+        },
+        "oid": "2.16.840.1.101.3.4.2.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-hmac-sha256",
+      "name": "HMAC-SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "crypto_demo.js",
+            "line": 167,
+            "offset": 4,
+            "additionalContext": "hmacSha256"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "256",
+          "cryptoFunctions": [
+            "mac"
+          ]
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-scrypt",
+      "name": "scrypt",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "crypto_demo.js",
+            "line": 175,
+            "offset": 4,
+            "additionalContext": "scryptSync"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "kdf",
+          "cryptoFunctions": [
+            "keyderive"
+          ]
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-pbkdf2-hmac-sha256",
+      "name": "PBKDF2-HMAC-SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "crypto_demo.js",
+            "line": 183,
+            "offset": 4,
+            "additionalContext": "pbkdf2Sync"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "kdf",
+          "parameterSetIdentifier": "256",
+          "cryptoFunctions": [
+            "keyderive"
+          ]
+        },
+        "oid": "1.2.840.113549.1.5.12"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "alg-rng-randombytes",
+      "name": "CSPRNG-randomBytes",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "crypto_demo.js",
+            "line": 94,
+            "offset": 8,
+            "additionalContext": "randomBytes"
+          },
+          {
+            "location": "crypto_demo.js",
+            "line": 122,
+            "offset": 8,
+            "additionalContext": "randomBytes"
+          },
+          {
+            "location": "crypto_demo.js",
+            "line": 176,
+            "offset": 8,
+            "additionalContext": "randomBytes"
+          },
+          {
+            "location": "crypto_demo.js",
+            "line": 185,
+            "offset": 8,
+            "additionalContext": "randomBytes"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "rng",
+          "cryptoFunctions": [
+            "random"
+          ]
+        }
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "privkey-rsa-node-demo",
+      "dependsOn": [
+        "alg-rsa-oaep-sha256",
+        "alg-rsassa-pss-sha256"
+      ]
+    },
+    {
+      "ref": "privkey-ec-node-demo",
+      "dependsOn": [
+        "alg-ecdsa-prime256v1-sha256"
+      ]
+    },
+    {
+      "ref": "alg-rsa-oaep-sha256",
+      "dependsOn": [
+        "alg-sha256"
+      ]
+    },
+    {
+      "ref": "alg-rsassa-pss-sha256",
+      "dependsOn": [
+        "alg-sha256"
+      ]
+    },
+    {
+      "ref": "alg-ecdsa-prime256v1-sha256",
+      "dependsOn": [
+        "alg-sha256"
+      ]
+    },
+    {
+      "ref": "alg-hmac-sha256",
+      "dependsOn": [
+        "alg-sha256"
+      ]
+    },
+    {
+      "ref": "alg-pbkdf2-hmac-sha256",
+      "dependsOn": [
+        "alg-sha256"
+      ]
+    }
+  ]
+}

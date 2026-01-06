@@ -1,0 +1,38 @@
+[project]
+name = "dynamic-cbom"
+version = "0.1.0"
+description = "Dynamic CBOM is an experimental software for testing the feasibility of extracting Cryptography Bill of Materials (CBOM) at runtime"
+readme = "README.md"
+authors = [
+    { name = "william", email = "william.anze.dan@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "datetime>=6.0",
+    "dynaconf>=3.2.12",
+    "matplotlib>=3.10.7",
+    "pandas>=2.3.3",
+    "pathlib>=1.0.1",
+    "pdoc>=16.0.0",
+    "plotly>=6.5.0",
+    "pyyaml>=6.0.3",
+    "requests>=2.32.5",
+    "ruff>=0.14.3",
+    "rule-engine>=4.5.3",
+    "scipy>=1.16.3",
+    "thefuzz>=0.22.1",
+    "typer>=0.20.0",
+    "uuid>=1.30",
+    "wordcloud>=1.9.4",
+]
+
+[project.scripts]
+dynamic-cbom = "interface.client:app"
+
+[tool.setuptools.packages.find]
+include = ["interface*"]
+
+
+
+
+

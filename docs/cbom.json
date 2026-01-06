@@ -1,0 +1,432 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:2e25df2e-2963-490e-9d06-69a0922cee61",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2025-11-24T16:38:02Z",
+    "tools": {
+      "components": [],
+      "services": [
+        {
+          "provider": {
+            "name": "PQCA"
+          },
+          "name": "CBOMkit"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "gitUrl",
+        "value": "https://github.com/william-dan/Testcases-for-IBM-cbomkit"
+      },
+      {
+        "name": "revision",
+        "value": "main"
+      },
+      {
+        "name": "commit",
+        "value": "61ec53a"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "8707500a-a328-4561-8930-7dec9858e420",
+      "name": "SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/BouncyCastleExample.java",
+            "line": 43,
+            "offset": 27,
+            "additionalContext": "java.security.Signature#getInstance(Ljava/lang/String;Ljava/lang/String;)Ljava/security/Signature;"
+          },
+          {
+            "location": "testPrograms/BouncyCastleExample.java",
+            "line": 53,
+            "offset": 29,
+            "additionalContext": "java.security.Signature#getInstance(Ljava/lang/String;Ljava/lang/String;)Ljava/security/Signature;"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "256",
+          "cryptoFunctions": [
+            "digest"
+          ]
+        },
+        "oid": "2.16.840.1.101.3.4.2.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "2236bd45-ceea-4279-ac04-e0151aabb3e7",
+      "name": "key@2236bd45-ceea-4279-ac04-e0151aabb3e7",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/BouncyCastleExample.java",
+            "line": 32,
+            "offset": 31,
+            "additionalContext": "java.security.KeyPairGenerator#getInstance(Ljava/lang/String;Ljava/lang/String;)Ljava/security/KeyPairGenerator;"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "secret-key",
+          "size": 2048
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "8de50eef-f463-48d7-826c-468273839797",
+      "name": "SHA256withRSA",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/BouncyCastleExample.java",
+            "line": 43,
+            "offset": 27,
+            "additionalContext": "java.security.Signature#getInstance(Ljava/lang/String;Ljava/lang/String;)Ljava/security/Signature;"
+          },
+          {
+            "location": "testPrograms/BouncyCastleExample.java",
+            "line": 53,
+            "offset": 29,
+            "additionalContext": "java.security.Signature#getInstance(Ljava/lang/String;Ljava/lang/String;)Ljava/security/Signature;"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "parameterSetIdentifier": "2048",
+          "cryptoFunctions": [
+            "sign"
+          ]
+        },
+        "oid": "1.2.840.113549.1.1.11"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "56466f21-0fbc-41a5-925b-15d6a3e52100",
+      "name": "RSA-2048",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/BouncyCastleExample.java",
+            "line": 32,
+            "offset": 31,
+            "additionalContext": "java.security.KeyPairGenerator#getInstance(Ljava/lang/String;Ljava/lang/String;)Ljava/security/KeyPairGenerator;"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "parameterSetIdentifier": "2048",
+          "cryptoFunctions": [
+            "keygen"
+          ]
+        },
+        "oid": "1.2.840.113549.1.1.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "5d7cef17-2567-4c6d-a642-aefd8af5fe7c",
+      "name": "SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_complicated_example.py",
+            "line": 150,
+            "offset": 10,
+            "additionalContext": "generate_key"
+          },
+          {
+            "location": "testPrograms/cryptography_pico_example.py",
+            "line": 13,
+            "offset": 11,
+            "additionalContext": "generate_key"
+          },
+          {
+            "location": "testPrograms/cryptography_pico_example.py",
+            "line": 27,
+            "offset": 10,
+            "additionalContext": "generate_key"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "256",
+          "cryptoFunctions": [
+            "digest"
+          ]
+        },
+        "oid": "2.16.840.1.101.3.4.2.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "14871f7e-54e2-4fcd-827c-392b5e9c61a8",
+      "name": "secret-key@14871f7e-54e2-4fcd-827c-392b5e9c61a8",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_pico_example.py",
+            "line": 27,
+            "offset": 10,
+            "additionalContext": "generate_key"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "secret-key"
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "ab79b939-6365-4f3d-a32b-c8b9eb35a381",
+      "name": "secret-key@ab79b939-6365-4f3d-a32b-c8b9eb35a381",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_complicated_example.py",
+            "line": 150,
+            "offset": 10,
+            "additionalContext": "generate_key"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "secret-key"
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "ac7fbede-cbfc-4b6c-aeeb-c945f49e6047",
+      "name": "AES128",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_complicated_example.py",
+            "line": 124,
+            "offset": 14,
+            "additionalContext": "aes_key_wrap"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other",
+          "parameterSetIdentifier": "128",
+          "cryptoFunctions": [
+            "encapsulate"
+          ]
+        },
+        "oid": "2.16.840.1.101.3.4.1"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "5ce71106-f61a-4c22-bf79-17d0b7395268",
+      "name": "AES128-CBC-PKCS7",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_complicated_example.py",
+            "line": 150,
+            "offset": 10,
+            "additionalContext": "generate_key"
+          },
+          {
+            "location": "testPrograms/cryptography_pico_example.py",
+            "line": 13,
+            "offset": 11,
+            "additionalContext": "generate_key"
+          },
+          {
+            "location": "testPrograms/cryptography_pico_example.py",
+            "line": 27,
+            "offset": 10,
+            "additionalContext": "generate_key"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher",
+          "parameterSetIdentifier": "128",
+          "mode": "cbc",
+          "padding": "pkcs7"
+        },
+        "oid": "2.16.840.1.101.3.4.1.2"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "120535f5-7f48-48d7-aa60-ed7239c32769",
+      "name": "secret-key@120535f5-7f48-48d7-aa60-ed7239c32769",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_pico_example.py",
+            "line": 13,
+            "offset": 11,
+            "additionalContext": "generate_key"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "secret-key"
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "e53c6a0d-2f5b-4e97-868c-faa620a1b6ee",
+      "name": "HMAC-SHA256",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_complicated_example.py",
+            "line": 150,
+            "offset": 10,
+            "additionalContext": "generate_key"
+          },
+          {
+            "location": "testPrograms/cryptography_pico_example.py",
+            "line": 13,
+            "offset": 11,
+            "additionalContext": "generate_key"
+          },
+          {
+            "location": "testPrograms/cryptography_pico_example.py",
+            "line": 27,
+            "offset": 10,
+            "additionalContext": "generate_key"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac",
+          "cryptoFunctions": [
+            "tag"
+          ]
+        },
+        "oid": "1.2.840.113549.2.9"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "c41176e6-56d9-434f-86ec-2171f0544526",
+      "name": "Fernet",
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testPrograms/cryptography_complicated_example.py",
+            "line": 150,
+            "offset": 10,
+            "additionalContext": "generate_key"
+          },
+          {
+            "location": "testPrograms/cryptography_pico_example.py",
+            "line": 13,
+            "offset": 11,
+            "additionalContext": "generate_key"
+          },
+          {
+            "location": "testPrograms/cryptography_pico_example.py",
+            "line": 27,
+            "offset": 10,
+            "additionalContext": "generate_key"
+          }
+        ]
+      },
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae",
+          "cryptoFunctions": [
+            "decrypt",
+            "encrypt",
+            "keygen"
+          ]
+        }
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "2236bd45-ceea-4279-ac04-e0151aabb3e7",
+      "dependsOn": [
+        "56466f21-0fbc-41a5-925b-15d6a3e52100"
+      ]
+    },
+    {
+      "ref": "8de50eef-f463-48d7-826c-468273839797",
+      "dependsOn": [
+        "8707500a-a328-4561-8930-7dec9858e420"
+      ]
+    },
+    {
+      "ref": "c41176e6-56d9-434f-86ec-2171f0544526",
+      "dependsOn": [
+        "5ce71106-f61a-4c22-bf79-17d0b7395268",
+        "e53c6a0d-2f5b-4e97-868c-faa620a1b6ee"
+      ]
+    },
+    {
+      "ref": "14871f7e-54e2-4fcd-827c-392b5e9c61a8",
+      "dependsOn": [
+        "c41176e6-56d9-434f-86ec-2171f0544526"
+      ]
+    },
+    {
+      "ref": "e53c6a0d-2f5b-4e97-868c-faa620a1b6ee",
+      "dependsOn": [
+        "5d7cef17-2567-4c6d-a642-aefd8af5fe7c"
+      ]
+    },
+    {
+      "ref": "120535f5-7f48-48d7-aa60-ed7239c32769",
+      "dependsOn": [
+        "c41176e6-56d9-434f-86ec-2171f0544526"
+      ]
+    },
+    {
+      "ref": "ab79b939-6365-4f3d-a32b-c8b9eb35a381",
+      "dependsOn": [
+        "c41176e6-56d9-434f-86ec-2171f0544526"
+      ]
+    }
+  ]
+}

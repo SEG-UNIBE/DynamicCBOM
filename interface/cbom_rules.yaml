@@ -1,0 +1,69 @@
+version: 1
+
+defaults:
+  primitive: other
+  cryptoFunctions: []
+
+rules:
+  # AES-GCM / CCM / ChaCha20-Poly1305 as AEAD
+  - id: aead_from_cipher_fetch
+    expr: >
+      op =~~ "(GCM|CCM|CHACHA20-POLY1305|SIV)"
+    primitive: ae
+    priority: 100
+
+  # Block ciphers (CBC/etc.)
+  - id: block_cipher_from_cipher_fetch
+    expr: >
+      op =~~ "(AES-|DES|CAMELLIA|SM4)"
+    primitive: block-cipher
+    priority: 80
+
+  # Stream ciphers
+  - id: stream_cipher_from_cipher_fetch
+    expr: >
+      op =~~ "(RC4|CHACHA20|SALSA20|CTR)"
+    primitive: stream-cipher
+    priority: 90
+
+  # Hash functions via EVP_MD_fetch
+  - id: hash_from_evp_md_fetch
+    expr: >
+      op =~~ "(MD5|SHA|SHAKE|BLAKE2)"
+    primitive: hash
+    priority: 70
+
+  # KDFs
+  - id: kdf_from_evp_kdf_fetch
+    expr: >
+      op =~~ "(PBKDF2|HKDF|scrypt|Argon2)"
+    primitive: kdf
+    
+
+  # Key Agreement (ECDH/SM2)
+  - id: kex_from_evp_pkey_derive_fetch
+    expr: >
+      op =~~ "(ECDH|SM2|X25519|X448|DH)"
+    primitive: key-agree
+
+  # RNG / DRBG
+  - id: rng_from_evp_rand_fetch
+    expr: >
+      op =~~ "(CTR-DRBG|HMAC-DRBG|HASH-DRBG|SEED-SRC|RND)"
+    primitive: rng
+
+  # Asymmetric encryption (RSA via EVP_ASYM_CIPHER)
+  - id: pke_from_evp_asym_cipher
+    expr: >
+      op =~~ "RSA" and ("encrypt" in func or "decrypt" in func)
+    primitive: pke
+
+  # Signatures (EVP_SIGNATURE)
+  - id: signatures_from_evp_signature
+    expr: >
+      op =~~ "(RSA|ECDSA|ED25519|ED448|DSA)"
+    primitive: signature
+
+
+  
+  

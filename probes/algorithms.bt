@@ -1,0 +1,36 @@
+
+
+/* EVP_*_fetch(ctx, const char *algorithm, const char *properties)
+  Single handler for all fetch calls — no repetition. */
+
+uprobe:libcrypto:EVP_*_fetch
+{
+  @arg0["EVP_*_fetch"] = arg1;
+}
+
+uretprobe:libcrypto:EVP_*_fetch
+{
+  printf("%-16s | %-80s | %-19s | %-6d | %-25s | next=%-20p\n",
+      comm,
+      probe,
+      strftime("%Y-%m-%d %H:%M:%S", nsecs),
+      pid,
+      str(@arg0["EVP_*_fetch"]),
+      (uint64)retval);
+}
+
+
+
+
+/*
+EVP_*_fetch contains:
+  - EVP_MD_fetch
+  - EVP_CIPHER_fetch
+  - EVP_KDF_fetch
+  - EVP_MAC_fetch
+  - EVP_PKEY_ASN1_fetch
+  - EVP_PKEY_METHOD_fetch
+  - EVP_PKEY_FETCH_fetch
+  - EVP_SIGNATURE_fetch
+  - EVP_RAND_fetch
+*/

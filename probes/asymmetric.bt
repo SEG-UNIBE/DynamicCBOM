@@ -1,0 +1,72 @@
+
+uprobe:libcrypto:EVP_PKEY_CTX_new
+{
+
+  @arg0["EVP_PKEY_CTX_new"] = arg0;
+  
+}
+uretprobe:libcrypto:EVP_PKEY_CTX_new
+{
+  printf("%-16s | %-80s | %-8s | %-6d | %-25s | prev=%-20p, next=%-20p\n",
+      comm, probe, strftime("%Y-%m-%d %H:%M:%S", nsecs), pid, "EVP_PKEY_CTX_new", (uint64)@arg0["EVP_PKEY_CTX_new"], (uint64)retval);
+}
+
+uprobe:libcrypto:EVP_PKEY_*_init
+{
+  printf("%-16s | %-80s | %-8s | %-6d | %-25s | prev=%-20p\n",
+      comm, probe, strftime("%Y-%m-%d %H:%M:%S", nsecs), pid, "nan", (uint64)arg0);
+}
+/*
+uprobe:libcrypto:EVP_PKEY_CTX_new_from_name
+{
+  @arg0["EVP_PKEY_CTX_new_from_name"] = arg0;
+}
+uretprobe:libcrypto:EVP_PKEY_CTX_new_from_name
+{
+  printf("%-16s | %-80s | %-8s | %-6d | %-25s | prev=%-20p, next=%-20p\n",
+      comm, probe, strftime("%Y-%m-%d %H:%M:%S", nsecs), pid, "EVP_PKEY_CTX_new_from_name", (uint64)@arg0["EVP_PKEY_CTX_new_from_name"], (uint64)retval);
+}
+*/
+/*
+EC_* contains:
+  - EC_KEY_new_by_curve_name
+  - EC_GROUP_get_curve_name
+  - EC_KEY_generate_key
+  - EC_KEY_check_key
+  - EC_KEY_sign
+  - EC_KEY_verify
+  - EC_KEY_size
+  - ...
+*/
+uprobe:libcrypto:EC_KEY_generate_key
+{
+  printf("%-16s | %-80s | %-8s | %-6d | %-25s | \n",
+      comm, probe, strftime("%Y-%m-%d %H:%M:%S", nsecs), pid, "EC");
+}
+
+
+/*
+EC key length retrieval
+*/
+/*
+uretprobe:libcrypto:EC_GROUP_order_bits
+{
+  printf("%-16s | %-80s | %-8s | %-6d | %-25s | ec_order_bits=%-6d\n",
+    comm, probe, strftime("%Y-%m-%d %H:%M:%S", nsecs), pid, "EC_GROUP_order_bits", (int32)retval);
+}
+*/
+
+/*
+int EVP_PKEY_get_size(const EVP_PKEY *pkey);
+int EVP_PKEY_get_bits(const EVP_PKEY *pkey);
+int EVP_PKEY_get_security_bits(const EVP_PKEY *pkey);
+*/
+uprobe:libcrypto:EVP_PKEY_get_size
+{
+  @arg0["EVP_PKEY_get_size"] = arg0;
+}
+uretprobe:libcrypto:EVP_PKEY_get_size
+{
+  printf("%-16s | %-80s | %-8s | %-6d | %-25s | pkey_size=%-6d, next=%-20p \n",
+    comm, probe, strftime("%Y-%m-%d %H:%M:%S", nsecs), pid, "EVP_PKEY_get_size", (int32)retval, @arg0["EVP_PKEY_get_size"]);
+}
