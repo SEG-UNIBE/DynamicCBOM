@@ -3,11 +3,11 @@
 This module provides a small wrapper around BpftraceWrapper that starts bpftrace
 with the "-p <pid>" option so the script attaches to a running process.
 """
-from interface.bpftraceWrapper import BpftraceWrapper
+
 from typing import Optional
+
+from interface.bpftraceWrapper import BpftraceWrapper
 from interface.config import settings
-
-
 
 
 class AttachByPID(BpftraceWrapper):
@@ -17,7 +17,7 @@ class AttachByPID(BpftraceWrapper):
     """
 
     def __init__(
-        self, 
+        self,
         bpftrace_binary: str = settings.default_bpftrace_binary_path,
     ):
         # Pass the path to the bpftrace binary to the base wrapper.
@@ -26,10 +26,10 @@ class AttachByPID(BpftraceWrapper):
         )
 
     def run(
-        self, 
+        self,
         pid: int,
         script: str = settings.default_bpftrace_script_path,
-        log_file: Optional[str] = settings.default_log_path
+        log_file: Optional[str] = settings.default_log_path,
     ):
         """Start bpftrace attaching to the given PID.
 
@@ -40,8 +40,4 @@ class AttachByPID(BpftraceWrapper):
         """
         # Use the base class start() method and add the "-p <pid>" extra arg
         # so the bpftrace session attaches to the target process.
-        self.start(
-            script=script,
-            log_file=log_file,
-            extra_args=["-p", str(pid)]
-        )
+        self.start(script=script, log_file=log_file, extra_args=["-p", str(pid)])

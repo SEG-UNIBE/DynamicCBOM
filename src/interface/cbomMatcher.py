@@ -5,7 +5,8 @@ CycloneDX Bill of Materials (CBOM) documents using similarity metrics and the
 Hungarian algorithm for optimal matching.
 """
 
-from typing import List, Dict, Tuple
+from typing import Dict, List, Tuple
+
 import numpy as np
 from scipy.optimize import linear_sum_assignment
 from thefuzz import fuzz
@@ -35,7 +36,11 @@ class CBOMMatcher:
             bom_ref_gt = match["gt_id"]
             bom_ref_target = match.get("target_id")
             gt_name = next((a["name"] for a in gt if a["bom-ref"] == bom_ref_gt), "Unknown")
-            target_name = next((a["name"] for a in target if a["bom-ref"] == bom_ref_target), "None") if bom_ref_target else "None"
+            target_name = (
+                next((a["name"] for a in target if a["bom-ref"] == bom_ref_target), "None")
+                if bom_ref_target
+                else "None"
+            )
             similarity = match["similarity"]
             print(f"GT: ({gt_name}) <-> Target: ({target_name}) | Similarity: {similarity:.2f}")
 
@@ -81,7 +86,9 @@ class CBOMMatcher:
         # Weighted combination (tune these weights as needed)
         return 0.5 * name_sim + 0.5 * prim_sim
 
-    def _build_cost_matrix(self, gt: List[Dict], target: List[Dict]) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+    def _build_cost_matrix(
+        self, gt: List[Dict], target: List[Dict]
+    ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
         """Build cost matrix for the Hungarian algorithm.
 
         Creates a square cost matrix (with padding if needed) where each cell
@@ -137,29 +144,45 @@ class CBOMMatcher:
             if i < len(gt) and j < len(target):
                 s = sim[i, j]
                 if s >= threshold:
-                    matches.append({
-                        "gt_id": gt[i]["bom-ref"],
-                        "target_id": target[j]["bom-ref"],
-                        "similarity": float(s)
-                    })
+                    matches.append(
+                        {
+                            "gt_id": gt[i]["bom-ref"],
+                            "target_id": target[j]["bom-ref"],
+                            "similarity": float(s),
+                        }
+                    )
                     used_target.add(j)
                 else:
                     # Below threshold: treat as false negative for ground truth
-                    matches.append({
-                        "gt_id": gt[i]["bom-ref"],
-                        "target_id": None,
-                        "similarity": float(s),
-                        "note": "no good match (FN)"
-                    })
+                    matches.append(
+                        {
+                            "gt_id": gt[i]["bom-ref"],
+                            "target_id": None,
+                            "similarity": float(s),
+                            "note": "no good match (FN)",
+                        }
+                    )
 
         self._print_matches(matches, gt, target)
 
         # Calculate precision, recall, and F1 score
-        true_positives = len(matches) - sum(1 for match in matches if match.get("target_id") is None)
+        true_positives = len(matches) - sum(
+            1 for match in matches if match.get("target_id") is None
+        )
         false_negatives = len(gt) - true_positives
         false_positives = len(target) - len(used_target)
-        precision = true_positives / (true_positives + false_positives) if (true_positives + false_positives) > 0 else 0
-        recall = true_positives / (true_positives + false_negatives) if (true_positives + false_negatives) > 0 else 0
-        f1_score = (2 * precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
+        precision = (
+            true_positives / (true_positives + false_positives)
+            if (true_positives + false_positives) > 0
+            else 0
+        )
+        recall = (
+            true_positives / (true_positives + false_negatives)
+            if (true_positives + false_negatives) > 0
+            else 0
+        )
+        f1_score = (
+            (2 * precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
+        )
 
         return matches, precision, recall, f1_score

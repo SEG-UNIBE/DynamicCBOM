@@ -7,15 +7,18 @@ subprocess/requests for operations.
 
 import os
 import platform
-import requests
 import subprocess
+
+import requests
 from rich.progress import Progress, SpinnerColumn, TextColumn
+
 from interface.config import settings
 from interface.utils.singleton import SingletonMeta
 
 
 class DependencyInstallerError(Exception):
     """Exception raised for errors in DependencyInstaller operations."""
+
     pass
 
 
@@ -47,8 +50,9 @@ class DependencyInstaller(metaclass=SingletonMeta):
         Returns:
             True if the binary exists and is executable, False otherwise.
         """
-        if os.path.isfile(settings.default_bpftrace_binary_path) and \
-           os.access(settings.default_bpftrace_binary_path, os.X_OK):
+        if os.path.isfile(settings.default_bpftrace_binary_path) and os.access(
+            settings.default_bpftrace_binary_path, os.X_OK
+        ):
             return True
         return False
 
@@ -96,8 +100,7 @@ class DependencyInstaller(metaclass=SingletonMeta):
                 transient=True,
             ) as progress:
                 progress.add_task(
-                    description="Setting executable permissions for bpftrace...",
-                    total=None
+                    description="Setting executable permissions for bpftrace...", total=None
                 )
                 os.chmod(settings.default_bpftrace_binary_path, 0o755)
             print("Set executable permissions for bpftrace")
@@ -134,8 +137,9 @@ class DependencyInstaller(metaclass=SingletonMeta):
         Returns:
             True if the default script path exists and is readable, False otherwise.
         """
-        return os.path.isfile(settings.default_bpftrace_script_path) and \
-               os.access(settings.default_bpftrace_script_path, os.R_OK)
+        return os.path.isfile(settings.default_bpftrace_script_path) and os.access(
+            settings.default_bpftrace_script_path, os.R_OK
+        )
 
     def install_bpftrace_scripts(self) -> None:
         """Build bpftrace scripts by running make.
@@ -154,11 +158,7 @@ class DependencyInstaller(metaclass=SingletonMeta):
             ) as progress:
                 progress.add_task(description="Building bpftrace scripts...", total=None)
                 result = subprocess.run(
-                    ["make", "all"],
-                    cwd=scripts_dir,
-                    check=True,
-                    text=True,
-                    capture_output=True
+                    ["make", "all"], cwd=scripts_dir, check=True, text=True, capture_output=True
                 )
             print("Build succeeded:\n", result.stdout)
         except subprocess.CalledProcessError as e:
@@ -176,11 +176,7 @@ class DependencyInstaller(metaclass=SingletonMeta):
         scripts_dir = settings.default_bpftrace_script_folder_path
         try:
             result = subprocess.run(
-                ["make", "clean"],
-                cwd=scripts_dir,
-                check=True,
-                text=True,
-                capture_output=True
+                ["make", "clean"], cwd=scripts_dir, check=True, text=True, capture_output=True
             )
             print("Clean succeeded:\n", result.stdout)
         except subprocess.CalledProcessError as e:

@@ -9,7 +9,7 @@ from dynaconf import Dynaconf
 
 settings = Dynaconf(
     settings_files=["./interface/settings.toml", "./interface/.secrets.toml"],
-    envvar_prefix="DYNACONF"
+    envvar_prefix="DYNACONF",
 )
 
 # Environment variables with the DYNACONF prefix (e.g., DYNACONF_FOO=bar) override

@@ -6,8 +6,9 @@ with a target command (using -c "command args...") and sensible defaults
 from the project's settings.
 """
 
+from typing import Optional, Sequence
+
 from interface.bpftraceWrapper import BpftraceWrapper
-from typing import Sequence, Optional
 from interface.config import settings
 
 
@@ -46,8 +47,4 @@ class RunNewTarget(BpftraceWrapper):
         """
         # Use the inherited start() method. Pass the target command as a single
         # quoted command string to bpftrace via the -c argument.
-        self.start(
-            script=script,
-            log_file=log_file,
-            extra_args=["-c", " ".join(target_cmd)]
-        )
+        self.start(script=script, log_file=log_file, extra_args=["-c", " ".join(target_cmd)])

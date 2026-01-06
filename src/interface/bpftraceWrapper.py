@@ -5,17 +5,21 @@ process management, logging, and error handling.
 """
 
 from __future__ import annotations
+
 import subprocess
-import threading
-import typer
 import sys
+import threading
 from typing import List, Optional
-from interface.dependencyInstaller import DependencyInstaller
+
+import typer
+
 from interface.config import settings
+from interface.dependencyInstaller import DependencyInstaller
 
 
 class BpftraceError(RuntimeError):
     """Exception raised for bpftrace-related errors."""
+
     pass
 
 
@@ -52,7 +56,7 @@ class BpftraceWrapper:
             typer.secho(
                 "⚠️  Warning: 'bpftrace' or its scripts are not installed. "
                 "Use 'dynamic-cbom install-dependencies' to install them.",
-                fg=typer.colors.YELLOW
+                fg=typer.colors.YELLOW,
             )
             raise BpftraceError("'bpftrace' or its scripts are not installed")
         self._binary = bpftrace_binary
@@ -63,7 +67,7 @@ class BpftraceWrapper:
         self,
         script: str = settings.default_bpftrace_script_path,
         log_file: Optional[str] = settings.default_log_path,
-        extra_args: Optional[List[str]] = None
+        extra_args: Optional[List[str]] = None,
     ) -> None:
         """Start bpftrace with the given script and arguments.
 
@@ -96,6 +100,3 @@ class BpftraceWrapper:
             except Exception as e:
                 typer.secho(f"Error running bpftrace: {e}", fg=typer.colors.RED)
                 raise BpftraceError(f"Error running bpftrace: {e}")
-
-
-    

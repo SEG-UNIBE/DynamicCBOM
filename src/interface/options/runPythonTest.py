@@ -4,10 +4,13 @@ Wrapper to run a Python test program under bpftrace.
 Provides RunPythonTest which extends BpftraceWrapper and invokes bpftrace
 with the -c option to run a given Python test program while tracing.
 """
-from interface.bpftraceWrapper import BpftraceWrapper
+
 import os
 from typing import Optional
+
+from interface.bpftraceWrapper import BpftraceWrapper
 from interface.config import settings
+
 
 class RunPythonTest(BpftraceWrapper):
     """
@@ -16,8 +19,9 @@ class RunPythonTest(BpftraceWrapper):
     Parameters:
     - bpftrace_binary: path to the bpftrace executable (defaults from settings)
     """
+
     def __init__(
-        self, 
+        self,
         bpftrace_binary: str = settings.default_bpftrace_binary_path,
     ):
         # Initialize parent wrapper with the bpftrace binary path
@@ -49,7 +53,5 @@ class RunPythonTest(BpftraceWrapper):
         # Start bpftrace with the provided script and log file.
         # Pass "-c /usr/bin/python3 <test_program>" so bpftrace runs the test under the Python interpreter.
         self.start(
-            script=script,
-            log_file=log_file,
-            extra_args=["-c", f"/usr/bin/python3 {test_program}"]
+            script=script, log_file=log_file, extra_args=["-c", f"/usr/bin/python3 {test_program}"]
         )

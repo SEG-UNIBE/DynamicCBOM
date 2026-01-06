@@ -4,9 +4,11 @@ Wrapper option to run a global bpftrace script.
 Provides a small convenience class that configures and starts a BpftraceWrapper
 instance using application-wide default paths from the settings module.
 """
-from interface.bpftraceWrapper import BpftraceWrapper  # base wrapper that handles bpftrace process lifecycle
+
 from typing import Optional
-from interface.config import settings  # central configuration defaults
+
+from interface.bpftraceWrapper import BpftraceWrapper
+from interface.config import settings
 
 
 class GlobalTrace(BpftraceWrapper):
@@ -35,7 +37,7 @@ class GlobalTrace(BpftraceWrapper):
     def run(
         self,
         script: str = settings.default_bpftrace_script_path,
-        log_file: Optional[str] = settings.default_log_path
+        log_file: Optional[str] = settings.default_log_path,
     ):
         """
         Start the bpftrace script.
@@ -46,7 +48,4 @@ class GlobalTrace(BpftraceWrapper):
                          written. If None, behavior falls back to the base wrapper.
         """
         # Delegate to the wrapper's start method which handles launching and logging
-        self.start(
-            script=script,
-            log_file=log_file
-        )
+        self.start(script=script, log_file=log_file)
