@@ -1,7 +1,7 @@
-"""Top-level package for the project's interface utilities.
+"""DynamicCBOM interface package.
 
-This file makes `interface` a Python package and exposes commonly used
-submodules for convenience.
+This package contains the main interface components for the DynamicCBOM project,
+including CLI commands, log processing, charting, and dependency management.
 """
 
 from . import client  # noqa: F401
@@ -11,15 +11,15 @@ from . import config  # noqa: F401
 from . import logPostProcessor  # noqa: F401
 from . import cbomMatcher  # noqa: F401
 from . import chartGenerator  # noqa: F401
+from . import options  # noqa: F401
 
 __all__ = [
-    "client", 
-    "bpftraceWrapper", 
-    "dependencyInstaller", 
+    "client",
+    "bpftraceWrapper",
+    "dependencyInstaller",
     "config",
-    "options",
-    "singleton",
     "logPostProcessor",
     "cbomMatcher",
-    "chartGenerator"
+    "chartGenerator",
+    "options"
 ]

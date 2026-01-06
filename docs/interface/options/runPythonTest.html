@@ -216,7 +216,18 @@ with the -c option to run a given Python test program while tracing.</p>
 </span></pre></div>
 
 
-    
+            <div class="docstring"><p>Initialize the bpftrace wrapper.</p>
+
+<p>Verifies that bpftrace and required scripts are installed. Raises
+an exception if dependencies are not available.</p>
+
+<p>Args:
+    bpftrace_binary: Path to the bpftrace executable.</p>
+
+<p>Raises:
+    BpftraceError: If bpftrace is not installed.</p>
+</div>
+
 
                             </div>
                             <div id="RunPythonTest.run" class="classattr">
